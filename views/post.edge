@@ -1,0 +1,47 @@
+@layout('layouts.main')
+ 
+@section('content')
+<script>
+  function confirmDeletion() {
+    let resp = confirm("Möchtest du diesen Post wirklich löschen?");
+    if(resp){
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/posts/entfernen/", true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+          "id": {{ result.id }}
+      }));
+      resp = confirm("Post gelöscht! Wieder zurück zur Startseite?");
+      if(resp) {
+        window.location = "/";
+      }
+    }
+  }
+</script>
+<!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/about-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1 class="text-center">{{ result.title }}</h1>
+            <h2 class="subheading text-center"><i style="cursor: pointer;" onclick="confirmDeletion();" class="fa fa-trash"></i></h2>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>{{ result.content }}</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+  @endsection

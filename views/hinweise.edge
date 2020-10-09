@@ -1,0 +1,35 @@
+@layout('layouts.main')
+ 
+@section('content')
+ 
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/about-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Node.js Blog</h1>
+            <span class="subheading">Hinweise und Erläuterungen zum Aufbau</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h2>Funktionen</h2>
+        <p>Dieser Node.js Blog ist noch sehr minimal gehalten. Es wurde noch kein Usermanagement implementiert. Jeder kann einen einfachen Blogartikel erstellen und auch wieder löschen. Auf der Startseite werden alle Posts absteigend angezeigt - inklusive einer kleinen Textvorschau.</p>
+        <h2>Frontend</h2>
+        <p>Dieser Blog basiert im Bezug auf das Design auf dem <a href="https://getbootstrap.com" target="_blank">Bootstrap Framework<a/> und dem "Clean Blog" Template von <a href="https://startbootstrap.com" target="_blank">startbootstrap.com<a/>. Es wurden ledigliche kleine Anpassungen durchgeführt und einige Seiten bzw. Elemente eingefügt.</p>
+        <h2>Backend</h2>
+        <p>Serverseitig werden in diesem Projekt Node.js und Express genutzt. Zum Anzeigen dynamischer Webinhalte wird die Template Engine expressEdge verwendet. Diese gestaltet den Code durch Templates um einiges effizienter und ermöglicht das dynamische Einfügen von Inhalten in HTML Strukturen. Für das Speichern der Artikel wird eine SQLite Datenbank Datei verwendet.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  @endsection
