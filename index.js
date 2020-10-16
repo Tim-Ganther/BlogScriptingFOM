@@ -68,7 +68,7 @@ app.get('/posts/:id', (req, res) => {
       if (err) {
         console.error(err.message);
       }
-      result = {"id": row.id, "title": row.title, "content": row.content};
+      result = {"id": row.id, "title": row.title, "content": row.content.split(/(?:\n)/g)};
       res.render('post', {result});
     });
   });
