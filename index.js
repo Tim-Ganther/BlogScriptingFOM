@@ -41,7 +41,7 @@ app.get('/posts/neu', (req, res) => {
 
 app.post('/posts/speichern', (req, res) => {
   db.serialize(() => {
-    db.each(`INSERT INTO posts (title, content) VALUES ("`+req.body.title+`", "`+req.body.content+`");`, (err) => {
+    db.run(`INSERT INTO posts (title, content) VALUES ("`+req.body.title+`", "`+req.body.content+`");`, (err) => {
       if (err) {
         console.error(err.message);
       }
@@ -52,7 +52,7 @@ app.post('/posts/speichern', (req, res) => {
 
 app.post('/posts/entfernen', (req, res) => {
   db.serialize(() => {
-    db.each('DELETE FROM posts WHERE id = '+req.body.id, (err, row) => {
+    db.run('DELETE FROM posts WHERE id = '+req.body.id, (err, row) => {
       if (err) {
         console.error(err.message);
       }
