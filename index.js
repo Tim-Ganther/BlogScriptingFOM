@@ -91,6 +91,27 @@ app.get('/hinweise', (req, res) => {
     res.render('hinweise');
 });
 
+app.get('/neuer-nutzer', (req, res) => {
+    sess=req.session;
+    res.render('neuer-nutzer');
+});
+
+app.post('/neuer-nutzer', (req, res) => {
+    sess=req.session;
+    if(req.body.password1 == req.body.password2){
+      db.serialize(() => {
+        db.run(`INSERT INTO users (username, password) VALUES ("`+req.body.username+`", "`+req.body.password1+`");`, (err) => {
+          if (err) {
+            console.error(err.message);
+          }
+        });
+      });
+      res.render("login");
+    }else{
+      res.redirect("/neuer-nutzer/?passwordmatch=false");
+    }
+});
+
 app.get('/login', (req, res) => {
     sess=req.session;
     if(req.session.username){
