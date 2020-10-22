@@ -16,6 +16,7 @@
     "del": "^6.0.0",
     "express": "^4.17.1",
     "express-edge": "^2.0.2",
+    "express-session": "^1.17.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.3.0",

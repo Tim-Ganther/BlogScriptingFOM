@@ -1,0 +1,61 @@
+@layout('layouts.main')
+ 
+@section('content')
+
+ <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/about-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Login</h1>
+            <span id="message" class="subheading">Melden sie sich an.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <form action="/login" method="POST">
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Benutzername</label>
+            <input type="text" name="username" placeholder="Benutzername" class="form-control" required autocomplete="off">
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Passwort</label>
+            <input type="password" name="password" placeholder="Passwort" class="form-control" required autocomplete="off">
+          </div>
+        </div>
+        <div class="form-group my-4 text-center">
+          <button class="btn btn-primary">Login</button>
+        </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <script>
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+    const value = urlParams.get("error");
+    console.log(value);
+    if (value == "true") {
+      var message = document.getElementById("message");
+      message.innerHTML = "Benutzername oder Passwort falsch!";
+      message.style = "color:red; font-weight:bold";
+
+    }
+  </script>
+@endsection
